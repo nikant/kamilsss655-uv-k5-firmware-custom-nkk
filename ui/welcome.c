@@ -57,7 +57,15 @@ void UI_DisplayWelcome(void)
 	else
 	if (gEeprom.POWER_ON_DISPLAY_MODE == POWER_ON_DISPLAY_MODE_FULL_SCREEN)
 	{
-		ST7565_FillScreen(0xFF);
+		//ST7565_FillScreen(0xFF);
+		char battstatus[10];
+		sprintf(battstatus, "%u.%02uV %u%%",gBatteryVoltageAverage / 100,gBatteryVoltageAverage % 100,BATTERY_VoltsToPercent(gBatteryVoltageAverage));
+						
+		UI_PrintString("NIKANT", 0, LCD_WIDTH, 0, 8);
+		UI_PrintString("SY1EBE", 0, LCD_WIDTH, 2, 8);			
+		UI_PrintString(battstatus, 0, LCD_WIDTH, 5, 10);
+		ST7565_BlitStatusLine();  // blank status line
+		ST7565_BlitFullScreen();	
 	}
 	else
 	{
