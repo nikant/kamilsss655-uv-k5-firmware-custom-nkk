@@ -1,3 +1,8 @@
+> EXPERIMENTAL PLAYGROUND 
+>Your warranty is now void. I am not responsible for bricked devices, dead radios, thermonuclear war. YOU are choosing to make these modifications, and if you point the finger at me for messing up your device, I will laugh at you. 
+> If you want to have a more stable FW and even with more features, I advise you to look at other options.
+>
+
 # Open re-implementation of the Quansheng UV-K5 v2.1.27 firmware
 
 <img src="images/radio_picture.jpg" width=300 align="right"/>
