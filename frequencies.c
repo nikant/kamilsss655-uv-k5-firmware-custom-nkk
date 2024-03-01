@@ -209,7 +209,7 @@ int TX_freq_check(const uint32_t Frequency)
 			break;
 
 		case F_LOCK_PMR:
-			if (Frequency >= 44600625 && Frequency <= 44619375)
+			if ((Frequency >= 44600625 && Frequency <= 44619375) || (Frequency >= 43307500 && Frequency <= 43477500))
 				return 0;
 			break;
 
