@@ -7,6 +7,9 @@
 
 <img src="images/radio_picture.jpg" width=300 align="right"/>
 
+> [!TIP]
+> Due to recent CHIRP update many custom firmwares (including this one) are not supported and require a custom [uvk5-chirp-driver](https://github.com/kamilsss655/uvk5-chirp-driver).
+
 This repository is a fork of [Egzumer firmare](https://github.com/egzumer/uv-k5-firmware-custom) plus my changes:
 
 * `ENABLE_SPECTRUM_CHANNEL_SCAN` this enables spectrum channel scan mode (enter by going into memory mode and press F+5, this allows SUPER fast channel scanning (**4.5x faster than regular scanning**), regular scan of 200 memory channels takes roughly 18 seconds, **spectrum memory scan takes roughly 4 seconds**, if you have less channels stored i.e 50 - the spectrum memory scan will take only **1 second**
