@@ -1,10 +1,10 @@
-
 > **⚠️❗☠️  EXPERIMENTAL PLAYGROUND 
 >Your warranty is now void. I am not responsible for bricked devices, dead radios, thermonuclear war. YOU are choosing to make these modifications, and if you point the finger at me for messing up your device, I will laugh at you. 
-> If you want to have a more stable FW, I advise you to look at other options.⚠️❗☠️**
+> If you want to have a more stable FW, I advise you to look at other options. ☠️❗⚠️**
 >
 
-
+## This repository is a fork of [kamilsss655 firwmare](https://github.com/kamilsss655/uv-k5-firmware-custom). My changes are minor at the moment and for personal use.
+##
 # Open re-implementation of the Quansheng UV-K5 v2.1.27 firmware
 
 <img src="images/radio_picture.jpg" width=300 align="right"/>
