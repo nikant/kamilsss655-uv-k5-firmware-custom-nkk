@@ -62,7 +62,7 @@ AUTHOR_STRING := NKK
 #   	VERSION_STRING := $(shell git rev-parse --short HEAD)
 #	endif
 #endif
-VERSION_STRING := 001
+VERSION_STRING := 0.0.1
 
 TARGET = firmware.$(AUTHOR_STRING).$(VERSION_STRING)
 #TARGET = firmware.nkk
