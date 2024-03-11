@@ -23,6 +23,9 @@ This repository is a fork of [Egzumer firmare](https://github.com/egzumer/uv-k5-
 * `VOXSen` fixed and improved VOX sensitivity setting from menu. Added `VoxDel` - VOX delay setting allowing to set value to `0` for no VOX delay which might be useful for packet radio enthusiasts (APRS etc.).
 * `SqTone` configurable squelch tail tones and 180* phase shift tail when in CTCSS mode
 
+> [!NOTE]
+> You might be interested in my new open-source project [ESPRI](https://github.com/kamilsss655/ESPRI).
+
 > [!TIP]
 > Due to recent CHIRP update many custom firmwares (including this one) are not supported and require a custom [uvk5-chirp-driver](https://github.com/kamilsss655/uvk5-chirp-driver).
 
