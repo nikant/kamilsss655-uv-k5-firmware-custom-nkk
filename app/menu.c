@@ -50,6 +50,8 @@
 	#define ARRAY_SIZE(x) (sizeof(x) / sizeof(x[0]))
 #endif
 
+uint8_t gUnlockAllTxConfCnt;
+
 #ifdef ENABLE_F_CAL_MENU
 	void writeXtalFreqCal(const int32_t value, const bool update_eeprom)
 	{
@@ -788,6 +790,14 @@ void MENU_AcceptSetting(void)
 			break;
 
 		case MENU_F_LOCK: {
+			if(gSubMenuSelection == F_LOCK_NONE) { // select 3 times to enable
+				gUnlockAllTxConfCnt++;
+				if(gUnlockAllTxConfCnt < 3)
+					return;
+			}
+			else
+				gUnlockAllTxConfCnt = 0;
+
 			gSetting_F_LOCK = gSubMenuSelection;
 			break;
 		}

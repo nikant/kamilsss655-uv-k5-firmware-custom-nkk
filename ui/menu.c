@@ -308,8 +308,9 @@ const char * const gSubMenu_F_LOCK[] =
 	"GB HAM\n144-148\n430-440",
 	"137-174\n400-430",
 	"137-174\n400-438",
-	"PMR446",
-	"DISABLE\nALL"
+	"PMR446\nLPD",
+	"DISABLE\nALL",
+	"UNLOCK\nALL"
 };
 
 const char gSubMenu_BACKLIGHT[][7] =
@@ -887,7 +888,10 @@ void UI_DisplayMenu(void)
 				break;
 
 			case MENU_F_LOCK:
-				strcpy(String, gSubMenu_F_LOCK[gSubMenuSelection]);
+				if(!gIsInSubMenu && gUnlockAllTxConfCnt>0 && gUnlockAllTxConfCnt<3)
+					strcpy(String, "THE\nNUMBER\nIS THREE");
+				else
+					strcpy(String, gSubMenu_F_LOCK[gSubMenuSelection]);
 				break;
 
 			#ifdef ENABLE_F_CAL_MENU

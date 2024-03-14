@@ -53,17 +53,13 @@ ENABLE_ENCRYPTION                       := 1
 # ---- NIKANT-SY1EBE ----
 ENABLE_SY1EBE                           := 0
 ENABLE_BOOT_BEEPS                       := 1
-ENABLE_INVERSE_DISPLAY                  := 0                         
+ENABLE_INVERSE_DISPLAY                  := 1
 
 #############################################################
 
 AUTHOR_STRING := NKK
-VERSION_STRING := 0.0.5nN
+VERSION_STRING := 0.0.2
                                                           
-       
-      
-                       
-
 ifeq ($(ENABLE_SY1EBE),1)
 	TARGET = firmware.$(AUTHOR_STRING).$(VERSION_STRING).SY1EBE
 else ifeq ($(ENABLE_INVERSE_DISPLAY),1)

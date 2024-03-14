@@ -215,6 +215,12 @@ int TX_freq_check(const uint32_t Frequency)
 
 		case F_LOCK_ALL:
 			break;
+			
+		case F_LOCK_NONE:
+			for (uint32_t i = 0; i < ARRAY_SIZE(frequencyBandTable); i++)
+				if (Frequency >= frequencyBandTable[i].lower && Frequency < frequencyBandTable[i].upper)
+					return 0;
+			break;			
 	}
 
 	// dis-allowed TX frequency
