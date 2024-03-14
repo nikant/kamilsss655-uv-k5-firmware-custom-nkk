@@ -4,6 +4,9 @@
  * Modified work Copyright 2024 kamilsss655
  * https://github.com/kamilsss655
  *
+ * Modified work Copyright 2024 nikant
+ * https://github.com/nikant
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -196,7 +199,11 @@ uint8_t cmds[] = {
 	ST7565_CMD_BIAS_SELECT | 0, 			// Select bias setting: 1/9
 	ST7565_CMD_COM_DIRECTION  | (0 << 3), 	// Set output direction of COM: normal
 	ST7565_CMD_SEG_DIRECTION | 1, 			// Set scan direction of SEG: reverse
-	ST7565_CMD_INVERSE_DISPLAY | 0, 		// Inverse Display: false
+	#ifdef ENABLE_INVERSE_DISPLAY
+		ST7565_CMD_INVERSE_DISPLAY | 1, 		// Inverse Display: true
+	#else
+		ST7565_CMD_INVERSE_DISPLAY | 0, 		// Inverse Display: false
+	#endif
 	ST7565_CMD_ALL_PIXEL_ON | 0, 			// All Pixel ON: false - normal display
 	ST7565_CMD_REGULATION_RATIO | (4 << 0), // Regulation Ratio 5.0
 
