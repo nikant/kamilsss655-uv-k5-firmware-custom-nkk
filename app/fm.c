@@ -4,6 +4,9 @@
  * Modified work Copyright 2024 kamilsss655
  * https://github.com/kamilsss655
  *
+ * Modified work Copyright 2024 nikant
+ * https://github.com/nikant
+ *
  * Copyright 2024 kamilsss655
  * https://github.com/kamilsss655
  *
@@ -34,7 +37,8 @@
 #include "ui/ui.h"
 
 const uint16_t FM_RADIO_MAX_FREQ = 1080; // 108  Mhz
-const uint16_t FM_RADIO_MIN_FREQ = 875;  // 87.5 Mhz
+const uint16_t FM_RADIO_MIN_FREQ = 760;  // 76 Mhz
+//const uint16_t FM_RADIO_MIN_FREQ = 875;  // 87.5 Mhz
 
 bool              gFmRadioMode;
 uint8_t           gFmRadioCountdown_500ms;
