@@ -170,7 +170,22 @@ void Main(void)
 		#endif
 
 		UI_DisplayWelcome();
-
+        
+			while (boot_counter_10ms > 0)
+			{
+				if (KEYBOARD_Poll() != KEY_INVALID)
+				{	// halt boot beeps
+					boot_counter_10ms = 0;
+					break;
+				}
+	                #ifdef ENABLE_BOOT_BEEPS
+	                	if ((boot_counter_10ms % 250) == 0) {
+							AUDIO_PlayBeep(BEEP_1399HZ_50MS_OPTIONAL);
+							AUDIO_PlayBeep(BEEP_1399HZ_50MS_OPTIONAL);							
+						}
+	                #endif
+			}
+            
 		if (gEeprom.POWER_ON_DISPLAY_MODE != POWER_ON_DISPLAY_MODE_NONE)
 		{	// 2.55 second boot-up screen
 			SYSTEM_DelayMs(2550);

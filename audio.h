@@ -4,6 +4,9 @@
  * Modified work Copyright 2024 kamilsss655
  * https://github.com/kamilsss655
  *
+ * Modified work Copyright 2024 nikant
+ * https://github.com/nikant
+ *                                      
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -37,7 +40,8 @@ enum BEEP_Type_t
 	BEEP_500HZ_60MS_DOUBLE_BEEP,
 	BEEP_440HZ_40MS_OPTIONAL,
 	BEEP_880HZ_40MS_OPTIONAL,
-	BEEP_880HZ_60MS_TRIPLE_BEEP
+	BEEP_880HZ_60MS_TRIPLE_BEEP,
+	BEEP_1399HZ_50MS_OPTIONAL
 };
 
 typedef enum BEEP_Type_t BEEP_Type_t;
