@@ -76,6 +76,7 @@ void UI_DisplayWelcome(void)
 		ST7565_BlitFullScreen();	
 
 		//ST7565_FillScreen(0xFF);
+	}
 	else
 	{
 		memset(WelcomeString0, 0, sizeof(WelcomeString0));
