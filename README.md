@@ -4,10 +4,12 @@
 > If you want to have a more stable FW, I advise you to look at other options. ☠️❗⚠️**
 >
 ##
+### v0.0.3
+#### - STILL TESTING `UNLOCK ALL` frequencies to the hidden `F LOCK` menu (3 times to activate) 
 ### v0.0.2
 #### - Long press `M` key asigned to Switch Demodulation
 #### - added vertical line to separate menus from submenus
-#### - Makefile changes: ENABLE_SHOW_CHARGE_LEVEL, ENABLE_SHOW_CHARGE_LEVEL, ENABLE_REVERSE_BAT_SYMBOL
+#### - Makefile changes: ENABLE_SHOW_CHARGE_LEVEL, ENABLE_REVERSE_BAT_SYMBOL
 #### - addition of ENABLE_BOOT_BEEPS (if Beeps enabled in Menu). Boot beep changed to a sound similar to Baofeng UV-5R
 #### - addition of ENABLE_INVERSE_DISPLAY : Well that.. (negative LCD)
 #### - changes to POWER_ON_DISPLAY_MODE_FULL_SCREEN
