@@ -3,7 +3,16 @@
 >Your warranty is now void. I am not responsible for bricked devices, dead radios, thermonuclear war. YOU are choosing to make these modifications, and if you point the finger at me for messing up your device, I will laugh at you. 
 > If you want to have a more stable FW, I advise you to look at other options. ☠️❗⚠️**
 >
-
+##
+### v0.0.2
+#### - Long press `M` key asigned to Switch Demodulation
+#### - added vertical line to separate menus from submenus
+#### - Makefile changes: ENABLE_SHOW_CHARGE_LEVEL, ENABLE_SHOW_CHARGE_LEVEL, ENABLE_REVERSE_BAT_SYMBOL
+#### - addition of ENABLE_BOOT_BEEPS (if Beeps enabled in Menu). Boot beep changed to a sound similar to Baofeng UV-5R
+#### - addition of ENABLE_INVERSE_DISPLAY : Well that.. (negative LCD)
+#### - changes to POWER_ON_DISPLAY_MODE_FULL_SCREEN
+#### - added LPD frequencies to F_LOCK_PMR -> || (Frequency >= 43307500 && Frequency <= 43477500)
+##
 ## This repository is a fork of [kamilsss655 firwmare](https://github.com/kamilsss655/uv-k5-firmware-custom). My changes are minor at the moment and for personal use.
 ##
 # Open re-implementation of the Quansheng UV-K5 v2.1.27 firmware
