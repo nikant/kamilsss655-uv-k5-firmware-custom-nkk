@@ -4,6 +4,9 @@
  * Modified work Copyright 2024 kamilsss655
  * https://github.com/kamilsss655
  *
+ * Modified work Copyright 2024 nikant
+ * https://github.com/nikant
+ *                                      
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -57,16 +60,22 @@ void UI_DisplayWelcome(void)
 	else
 	if (gEeprom.POWER_ON_DISPLAY_MODE == POWER_ON_DISPLAY_MODE_FULL_SCREEN)
 	{
-		//ST7565_FillScreen(0xFF);
+
 		char battstatus[10];
 		sprintf(battstatus, "%u.%02uV %u%%",gBatteryVoltageAverage / 100,gBatteryVoltageAverage % 100,BATTERY_VoltsToPercent(gBatteryVoltageAverage));
-						
-		UI_PrintString("NIKANT", 0, LCD_WIDTH, 0, 8);
-		UI_PrintString("SY1EBE", 0, LCD_WIDTH, 2, 8);			
-		UI_PrintString(battstatus, 0, LCD_WIDTH, 5, 10);
+		#ifdef ENABLE_SY1EBE						
+			UI_PrintString("NIKANT", 0, LCD_WIDTH, 0, 8);
+			UI_PrintString("SY1EBE", 0, LCD_WIDTH, 2, 8);		
+			UI_PrintString(battstatus, 0, LCD_WIDTH, 4, 10);			
+		#else
+			UI_PrintString("Quansheng", 0, LCD_WIDTH, 0, 8);	
+			UI_PrintString(battstatus, 0, LCD_WIDTH, 3, 10);
+		#endif	
+		UI_PrintStringSmall(Version, 0, 128, 6);
 		ST7565_BlitStatusLine();  // blank status line
 		ST7565_BlitFullScreen();	
-	}
+
+		//ST7565_FillScreen(0xFF);
 	else
 	{
 		memset(WelcomeString0, 0, sizeof(WelcomeString0));

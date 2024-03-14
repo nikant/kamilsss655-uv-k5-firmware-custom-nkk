@@ -4,6 +4,9 @@
  * Modified work Copyright 2024 kamilsss655
  * https://github.com/kamilsss655
  *
+ * Modified work Copyright 2024 nikant
+ * https://github.com/nikant
+ *                                    
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -463,6 +466,9 @@ void UI_DisplayMenu(void)
 		const int menu_index = gMenuCursor;  // current selected menu item
 		i = 1;
 
+		// draw vertical separating dotted line
+		for (i = 0; i < 7; i++)
+			gFrameBuffer[i][(8 * menu_list_width) + 1] = 0xAA;
 		if (!gIsInSubMenu)
 		{
 			while (i < 2)
