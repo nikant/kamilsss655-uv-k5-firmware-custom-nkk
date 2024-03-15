@@ -4,6 +4,8 @@
 > If you want to have a more stable FW, I advise you to look at other options. ☠️❗⚠️**
 >
 ##
+### v0.0.3nN
+#### - removed all NOAA code from source
 ### v0.0.3
 #### - STILL TESTING `UNLOCK ALL` frequencies to the hidden `F LOCK` menu (3 times to activate) 
 ### v0.0.2
