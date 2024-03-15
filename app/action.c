@@ -4,6 +4,9 @@
  * Modified work Copyright 2024 kamilsss655
  * https://github.com/kamilsss655
  *
+ * Modified work Copyright 2024 nikant
+ * https://github.com/nikant
+ *                                      
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -79,10 +82,6 @@ void ACTION_Monitor(void)
 {
 	if (gCurrentFunction != FUNCTION_MONITOR) { // enable the monitor
 		RADIO_SelectVfos();
-#ifdef ENABLE_NOAA
-		if (gRxVfo->CHANNEL_SAVE >= NOAA_CHANNEL_FIRST && gIsNoaaMode)
-			gNoaaChannel = gRxVfo->CHANNEL_SAVE - NOAA_CHANNEL_FIRST;
-#endif
 		RADIO_SetupRegisters(true);
 		APP_StartListening(FUNCTION_MONITOR);
 		return;
@@ -95,13 +94,6 @@ void ACTION_Monitor(void)
 		gScheduleScanListen    = false;
 		gScanPauseMode         = true;
 	}
-
-#ifdef ENABLE_NOAA
-	if (gEeprom.DUAL_WATCH == DUAL_WATCH_OFF && gIsNoaaMode) {
-		gNOAA_Countdown_10ms = NOAA_countdown_10ms;
-		gScheduleNOAA        = false;
-	}
-#endif
 
 	RADIO_SetupRegisters(true);
 
@@ -125,10 +117,7 @@ void ACTION_Scan(bool bRestart)
 
 		RADIO_SelectVfos();
 
-#ifdef ENABLE_NOAA
-		if (!IS_NOAA_CHANNEL(gRxVfo->CHANNEL_SAVE))
-#endif
-		{
+
 			GUI_SelectNextDisplay(DISPLAY_MAIN);
 
 			if (gScanStateDir != SCAN_OFF)
@@ -176,7 +165,7 @@ void ACTION_Scan(bool bRestart)
 			}
 		}
 	}
-}
+
 
 #ifdef ENABLE_VOX
 	void ACTION_Vox(void)

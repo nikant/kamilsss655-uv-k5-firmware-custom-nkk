@@ -4,6 +4,9 @@
  * Modified work Copyright 2024 kamilsss655
  * https://github.com/kamilsss655
  *
+ * Modified work Copyright 2024 nikant
+ * https://github.com/nikant
+ *                                     
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -67,10 +70,6 @@ void SystickHandler(void)
 	if ((gGlobalSysTickCounter & 3) == 0)
 		gNextTimeslice40ms = true;
 
-	#ifdef ENABLE_NOAA
-		DECREMENT(gNOAACountdown_10ms);
-	#endif
-
 	DECREMENT(gFoundCDCSSCountdown_10ms);
 
 	DECREMENT(gFoundCTCSSCountdown_10ms);
@@ -85,12 +84,6 @@ void SystickHandler(void)
 		if (gCurrentFunction != FUNCTION_MONITOR && gCurrentFunction != FUNCTION_TRANSMIT && gCurrentFunction != FUNCTION_RECEIVE)
 			DECREMENT_AND_TRIGGER(gDualWatchCountdown_10ms, gScheduleDualWatch);
 
-	#ifdef ENABLE_NOAA
-		if (gScanStateDir == SCAN_OFF && !gCssBackgroundScan && gEeprom.DUAL_WATCH == DUAL_WATCH_OFF)
-			if (gIsNoaaMode && gCurrentFunction != FUNCTION_MONITOR && gCurrentFunction != FUNCTION_TRANSMIT)
-				if (gCurrentFunction != FUNCTION_RECEIVE)
-					DECREMENT_AND_TRIGGER(gNOAA_Countdown_10ms, gScheduleNOAA);
-	#endif
 
 	if (gScanStateDir != SCAN_OFF)
 		if (gCurrentFunction != FUNCTION_MONITOR && gCurrentFunction != FUNCTION_TRANSMIT)

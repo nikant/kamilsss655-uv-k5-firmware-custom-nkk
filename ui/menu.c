@@ -69,9 +69,6 @@ const t_menu_item MenuList[] =
 	{"ChDele", VOICE_ID_DELETE_CHANNEL,                MENU_DEL_CH        }, // was "DEL-CH"
 	{"ChName", VOICE_ID_INVALID,                       MENU_MEM_NAME      },	
 	{"ScnRev", VOICE_ID_INVALID,                       MENU_SC_REV        },
-#ifdef ENABLE_NOAA
-	{"NOAA-S", VOICE_ID_INVALID,                       MENU_NOAA_S        },
-#endif
 	{"F1Shrt",    VOICE_ID_INVALID,                    MENU_F1SHRT        },
 	{"F1Long",    VOICE_ID_INVALID,                    MENU_F1LONG        },
 	{"F2Shrt",    VOICE_ID_INVALID,                    MENU_F2SHRT        },
@@ -681,9 +678,6 @@ void UI_DisplayMenu(void)
 			case MENU_D_DCD:
 	#endif
 			case MENU_D_LIVE_DEC:
-			#ifdef ENABLE_NOAA
-				case MENU_NOAA_S:
-			#endif
 			#ifdef ENABLE_ENCRYPTION
 				case MENU_MSG_ENC:
 			#endif

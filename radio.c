@@ -4,6 +4,9 @@
  * Modified work Copyright 2024 kamilsss655
  * https://github.com/kamilsss655
  *
+ * Modified work Copyright 2024 nikant
+ * https://github.com/nikant
+ *                                      
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -158,20 +161,6 @@ void RADIO_ConfigureChannel(const unsigned int VFO, const unsigned int configure
 	uint8_t channel = gEeprom.ScreenChannel[VFO];
 
 	if (IS_VALID_CHANNEL(channel)) {
-#ifdef ENABLE_NOAA
-		if (channel >= NOAA_CHANNEL_FIRST)
-		{
-			RADIO_InitInfo(pVfo, gEeprom.ScreenChannel[VFO], NoaaFrequencyTable[channel - NOAA_CHANNEL_FIRST]);
-
-			if (gEeprom.CROSS_BAND_RX_TX == CROSS_BAND_OFF)
-				return;
-
-			gEeprom.CROSS_BAND_RX_TX = CROSS_BAND_OFF;
-
-			gUpdateStatus = true;
-			return;
-		}
-#endif
 
 		if (IS_MR_CHANNEL(channel)) {
 			channel = RADIO_FindNextChannel(channel, RADIO_CHANNEL_UP, false, VFO);
@@ -605,14 +594,9 @@ void RADIO_SetupRegisters(bool switchToForeground)
 	BK4819_WriteRegister(BK4819_REG_7D, 0xE940 | (gEeprom.MIC_SENSITIVITY_TUNING & 0x1f));
 
 	uint32_t Frequency;
-	#ifdef ENABLE_NOAA
-		if (!IS_NOAA_CHANNEL(gRxVfo->CHANNEL_SAVE) || !gIsNoaaMode)
-			Frequency = gRxVfo->pRX->Frequency;
-		else
-			Frequency = NoaaFrequencyTable[gNoaaChannel];
-	#else
+
 		Frequency = gRxVfo->pRX->Frequency + gEeprom.RX_OFFSET;
-	#endif
+
 	BK4819_SetFrequency(Frequency);
 
 	BK4819_SetupSquelch(
@@ -636,10 +620,7 @@ void RADIO_SetupRegisters(bool switchToForeground)
 
 	uint16_t InterruptMask = BK4819_REG_3F_SQUELCH_FOUND | BK4819_REG_3F_SQUELCH_LOST;
 
-	#ifdef ENABLE_NOAA
-		if (!IS_NOAA_CHANNEL(gRxVfo->CHANNEL_SAVE))
-	#endif
-	{
+
 		if (gRxVfo->Modulation == MODULATION_FM)
 		{	// FM
 			uint8_t CodeType = gRxVfo->pRX->CodeType;
@@ -685,33 +666,17 @@ void RADIO_SetupRegisters(bool switchToForeground)
 			else
 				BK4819_DisableScramble();
 		}
-	}
-	#ifdef ENABLE_NOAA
-		else
-		{
-			BK4819_SetCTCSSFrequency(2625);
-			InterruptMask = 0
-				| BK4819_REG_3F_CTCSS_FOUND
-				| BK4819_REG_3F_CTCSS_LOST
-				| BK4819_REG_3F_SQUELCH_FOUND
-				| BK4819_REG_3F_SQUELCH_LOST;
-		}
-	#endif
+
+
 
 	#ifdef ENABLE_VOX
-		#ifdef ENABLE_NOAA
-			#ifdef ENABLE_FMRADIO
-				if (gEeprom.VOX_SWITCH && !gFmRadioMode && !IS_NOAA_CHANNEL(gCurrentVfo->CHANNEL_SAVE) && gCurrentVfo->Modulation == MODULATION_FM)
-			#else
-				if (gEeprom.VOX_SWITCH && !IS_NOAA_CHANNEL(gCurrentVfo->CHANNEL_SAVE) && gCurrentVfo->Modulation == MODULATION_FM)
-			#endif
-		#else
+
 			#ifdef ENABLE_FMRADIO
 				if (gEeprom.VOX_SWITCH && !gFmRadioMode && gCurrentVfo->Modulation == MODULATION_FM)
 			#else
 				if (gEeprom.VOX_SWITCH && gCurrentVfo->Modulation == MODULATION_FM)
 			#endif
-		#endif
+
 		{
 			BK4819_EnableVox(gEeprom.VOX1_THRESHOLD, gEeprom.VOX0_THRESHOLD, gEeprom.VOX_DELAY);
 			InterruptMask |= BK4819_REG_3F_VOX_FOUND | BK4819_REG_3F_VOX_LOST;
@@ -764,50 +729,6 @@ void RADIO_SetupRegisters(bool switchToForeground)
 		FUNCTION_Select(FUNCTION_FOREGROUND);
 }
 
-#ifdef ENABLE_NOAA
-	void RADIO_ConfigureNOAA(void)
-	{
-		uint8_t ChanAB;
-
-		gUpdateStatus = true;
-
-		if (gEeprom.NOAA_AUTO_SCAN)
-		{
-			if (gEeprom.DUAL_WATCH != DUAL_WATCH_OFF)
-			{
-				if (!IS_NOAA_CHANNEL(gEeprom.ScreenChannel[0]))
-				{
-					if (!IS_NOAA_CHANNEL(gEeprom.ScreenChannel[1]))
-					{
-						gIsNoaaMode = false;
-						return;
-					}
-					ChanAB = 1;
-				}
-				else
-					ChanAB = 0;
-
-				if (!gIsNoaaMode)
-					gNoaaChannel = gEeprom.VfoInfo[ChanAB].CHANNEL_SAVE - NOAA_CHANNEL_FIRST;
-
-				gIsNoaaMode = true;
-				return;
-			}
-
-			if (gRxVfo->CHANNEL_SAVE >= NOAA_CHANNEL_FIRST)
-			{
-				gIsNoaaMode          = true;
-				gNoaaChannel         = gRxVfo->CHANNEL_SAVE - NOAA_CHANNEL_FIRST;
-				gNOAA_Countdown_10ms = NOAA_countdown_2_10ms;
-				gScheduleNOAA        = false;
-			}
-			else
-				gIsNoaaMode = false;
-		}
-		else
-			gIsNoaaMode = false;
-	}
-#endif
 
 void RADIO_SetTxParameters(void)
 {

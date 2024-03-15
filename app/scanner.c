@@ -4,6 +4,9 @@
  * Modified work Copyright 2024 kamilsss655
  * https://github.com/kamilsss655
  *
+ * Modified work Copyright 2024 nikant
+ * https://github.com/nikant
+ *                                     
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -311,10 +314,6 @@ void SCANNER_Start(bool singleFreq)
 	BK4819_StopScan();
 	RADIO_SelectVfos();
 
-#ifdef ENABLE_NOAA
-	if (IS_NOAA_CHANNEL(gRxVfo->CHANNEL_SAVE))
-		gRxVfo->CHANNEL_SAVE = FREQ_CHANNEL_FIRST + BAND6_400MHz;
-#endif
 
 	uint8_t  backupStep      = gRxVfo->STEP_SETTING;
 	uint16_t backupFrequency = gRxVfo->StepFrequency;
@@ -325,10 +324,6 @@ void SCANNER_Start(bool singleFreq)
 	gRxVfo->StepFrequency = backupFrequency;
 
 	RADIO_SetupRegisters(true);
-
-#ifdef ENABLE_NOAA
-	gIsNoaaMode = false;
-#endif
 
 	if (gScanSingleFrequency) {
 		gScanCssState  = SCAN_CSS_STATE_SCANNING;

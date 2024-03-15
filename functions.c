@@ -4,6 +4,9 @@
  * Modified work Copyright 2024 kamilsss655
  * https://github.com/kamilsss655
  *
+ * Modified work Copyright 2024 nikant
+ * https://github.com/nikant
+ *                                     
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -50,16 +53,9 @@ FUNCTION_Type_t gCurrentFunction;
 
 void FUNCTION_Init(void)
 {
-#ifdef ENABLE_NOAA
-	if (!IS_NOAA_CHANNEL(gRxVfo->CHANNEL_SAVE))
-#endif
-	{
+
 		gCurrentCodeType = (gRxVfo->Modulation != MODULATION_FM) ? CODE_TYPE_OFF : gRxVfo->pRX->CodeType;
-	}
-#ifdef ENABLE_NOAA
-	else
-		gCurrentCodeType = CODE_TYPE_CONTINUOUS_TONE;
-#endif
+
 
 #ifdef ENABLE_DTMF_CALLING
 	DTMF_clear_RX();
@@ -82,11 +78,6 @@ void FUNCTION_Init(void)
 	gFoundCTCSSCountdown_10ms          = 0;
 	gFoundCDCSSCountdown_10ms          = 0;
 	gEndOfRxDetectedMaybe              = false;
-
-	#ifdef ENABLE_NOAA
-		gNOAACountdown_10ms = 0;
-	#endif
-
 	gUpdateStatus = true;
 }
 

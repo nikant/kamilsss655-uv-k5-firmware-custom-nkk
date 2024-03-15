@@ -4,6 +4,9 @@
  * Modified work Copyright 2024 kamilsss655
  * https://github.com/kamilsss655
  *
+ * Modified work Copyright 2024 nikant
+ * https://github.com/nikant
+ *                                     
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -49,10 +52,7 @@ void SETTINGS_SaveVfoIndices(void)
 	State[3] = gEeprom.ScreenChannel[1];
 	State[4] = gEeprom.MrChannel[1];
 	State[5] = gEeprom.FreqChannel[1];
-	#ifdef ENABLE_NOAA
-		State[6] = gEeprom.NoaaChannel[0];
-		State[7] = gEeprom.NoaaChannel[1];
-	#endif
+
 
 	EEPROM_WriteBuffer(0x0E80, State, true);
 }
@@ -64,11 +64,9 @@ void SETTINGS_SaveSettings(void)
 	State[0] = gEeprom.CHAN_1_CALL;
 	State[1] = gEeprom.SQUELCH_LEVEL;
 	State[2] = gEeprom.TX_TIMEOUT_TIMER;
-	#ifdef ENABLE_NOAA
-		State[3] = gEeprom.NOAA_AUTO_SCAN;
-	#else
+
 		State[3] = false;
-	#endif
+
 	State[4] = gEeprom.KEY_LOCK;
 	#ifdef ENABLE_VOX
 		State[5] = gEeprom.VOX_SWITCH;
@@ -196,10 +194,7 @@ void SETTINGS_SaveSettings(void)
 
 void SETTINGS_SaveChannel(uint8_t Channel, uint8_t VFO, const VFO_Info_t *pVFO, uint8_t Mode)
 {
-	#ifdef ENABLE_NOAA
-		if (!IS_NOAA_CHANNEL(Channel))
-	#endif
-	{
+
 		uint16_t OffsetVFO = Channel * 16;
 
 		if (!IS_MR_CHANNEL(Channel))
@@ -258,7 +253,7 @@ void SETTINGS_SaveChannel(uint8_t Channel, uint8_t VFO, const VFO_Info_t *pVFO, 
 			}
 		}
 	}
-}
+
 
 void SETTINGS_SaveBatteryCalibration(const uint16_t * batteryCalibration)
 {
@@ -320,10 +315,7 @@ void SETTINGS_FetchChannelName(char *s, const int channel)
 
 void SETTINGS_UpdateChannel(uint8_t channel, const VFO_Info_t *pVFO, bool keep)
 {
-#ifdef ENABLE_NOAA
-	if (!IS_NOAA_CHANNEL(channel))
-#endif
-	{
+
 		uint8_t  state[8];
 		ChannelAttributes_t  att = {
 			.band = 0xf,
@@ -356,7 +348,7 @@ void SETTINGS_UpdateChannel(uint8_t channel, const VFO_Info_t *pVFO, bool keep)
 			}
 		}
 	}
-}
+
 
 void SETTINGS_SetVfoFrequency(uint32_t frequency) {
 	const uint8_t Vfo = gEeprom.TX_VFO;

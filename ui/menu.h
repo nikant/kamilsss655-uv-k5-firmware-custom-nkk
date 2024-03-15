@@ -4,6 +4,9 @@
  * Modified work Copyright 2024 kamilsss655
  * https://github.com/kamilsss655
  *
+ * Modified work Copyright 2024 nikant
+ * https://github.com/nikant
+ *                                      
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -111,9 +114,6 @@ enum
 	MENU_VOL,
 	MENU_BAT_TXT,
 	MENU_AM,
-#ifdef ENABLE_NOAA
-	MENU_NOAA_S,
-#endif
 	MENU_RESET,
 	MENU_F_LOCK,
 	MENU_200TX,

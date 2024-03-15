@@ -4,6 +4,9 @@
  * Modified work Copyright 2024 kamilsss655
  * https://github.com/kamilsss655
  *
+ * Modified work Copyright 2024 nikant
+ * https://github.com/nikant
+ *                                     
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -73,16 +76,6 @@ void UI_DisplayStatus()
 		x1 = x + sizeof(BITMAP_POWERSAVE);
 	}
 	x += sizeof(BITMAP_POWERSAVE);
-
-	#ifdef ENABLE_NOAA
-		// NOASS SCAN indicator
-		if (gIsNoaaMode)
-		{
-			memmove(line + x, BITMAP_NOAA, sizeof(BITMAP_NOAA));
-			x1 = x + sizeof(BITMAP_NOAA);
-		}
-		x += sizeof(BITMAP_NOAA);
-	#endif
 
 	#ifdef ENABLE_MESSENGER
 		if (hasNewMessage > 0) { // New Message indicator

@@ -4,6 +4,9 @@
  * Modified work Copyright 2024 kamilsss655
  * https://github.com/kamilsss655
  *
+ * Modified work Copyright 2024 nikant
+ * https://github.com/nikant
+ *                                     
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -166,9 +169,7 @@ void       RADIO_ConfigureSquelchAndOutputPower(VFO_Info_t *pInfo);
 void       RADIO_ApplyTxOffset(VFO_Info_t *pInfo);
 void       RADIO_SelectVfos(void);
 void       RADIO_SetupRegisters(bool bSwitchToFunction0);
-#ifdef ENABLE_NOAA
-	void   RADIO_ConfigureNOAA(void);
-#endif
+
 void       RADIO_SetTxParameters(void);
 void       RADIO_SetModulation(ModulationMode_t modulation);
 void       RADIO_SetVfoState(VfoState_t State);

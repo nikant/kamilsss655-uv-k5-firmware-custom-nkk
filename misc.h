@@ -4,6 +4,9 @@
  * Modified work Copyright 2024 kamilsss655
  * https://github.com/kamilsss655
  *
+ * Modified work Copyright 2024 nikant
+ * https://github.com/nikant
+ *                                      
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -42,15 +45,13 @@
 #define IS_MR_CHANNEL(x)       ((x) <= MR_CHANNEL_LAST)
 #define IS_FREQ_CHANNEL(x)     ((x) >= FREQ_CHANNEL_FIRST && (x) <= FREQ_CHANNEL_LAST)
 #define IS_VALID_CHANNEL(x)    ((x) < LAST_CHANNEL)
-#define IS_NOAA_CHANNEL(x)     ((x) >= NOAA_CHANNEL_FIRST && (x) <= NOAA_CHANNEL_LAST)
+
 
 enum {
 	MR_CHANNEL_FIRST   = 0,
 	MR_CHANNEL_LAST    = 199u,
 	FREQ_CHANNEL_FIRST = 200u,
 	FREQ_CHANNEL_LAST  = 206u,
-	NOAA_CHANNEL_FIRST = 207u,
-	NOAA_CHANNEL_LAST  = 216u,
 	LAST_CHANNEL
 };
 
@@ -130,16 +131,13 @@ extern const uint16_t        power_save2_10ms;
 	extern const uint16_t    vox_stop_count_down_10ms;
 #endif
 
-extern const uint16_t        NOAA_countdown_10ms;
-extern const uint16_t        NOAA_countdown_2_10ms;
-extern const uint16_t        NOAA_countdown_3_10ms;
 
 extern const uint16_t        dual_watch_count_after_tx_10ms;
 extern const uint16_t        dual_watch_count_after_rx_10ms;
 extern const uint16_t        dual_watch_count_after_1_10ms;
 extern const uint16_t        dual_watch_count_after_2_10ms;
 extern const uint16_t        dual_watch_count_toggle_10ms;
-extern const uint16_t        dual_watch_count_noaa_10ms;
+
 #ifdef ENABLE_VOX
 	extern const uint16_t    dual_watch_count_after_vox_10ms;
 #endif
@@ -238,9 +236,7 @@ extern volatile uint16_t     gTailNoteEliminationCountdown_10ms;
 #ifdef ENABLE_FMRADIO
 	extern volatile uint16_t gFmPlayCountdown_10ms;
 #endif
-#ifdef ENABLE_NOAA
-	extern volatile uint16_t gNOAA_Countdown_10ms;
-#endif
+
 extern bool                  gEnableSpeaker;
 extern uint8_t               gKeyInputCountdown;
 extern uint8_t               gKeyLockCountdown;
@@ -324,10 +320,7 @@ extern uint8_t               gScanDelay_10ms;
 	extern uint8_t           gAircopySendCountdown;
 #endif
 extern uint8_t               gFSKWriteIndex;
-#ifdef ENABLE_NOAA
-	extern bool              gIsNoaaMode;
-	extern uint8_t           gNoaaChannel;
-#endif
+
 extern volatile bool         gNextTimeslice;
 extern bool                  gUpdateDisplay;
 extern bool                  gF_LOCK;
@@ -338,10 +331,7 @@ extern volatile uint8_t      gFoundCTCSSCountdown_10ms;
 	extern volatile uint16_t gVoxStopCountdown_10ms;
 #endif
 extern volatile bool         gNextTimeslice40ms;
-#ifdef ENABLE_NOAA
-	extern volatile uint16_t gNOAACountdown_10ms;
-	extern volatile bool     gScheduleNOAA;
-#endif
+
 extern volatile bool         gFlagTailNoteEliminationComplete;
 extern volatile uint8_t      gVFOStateResumeCountdown_500ms;
 #ifdef ENABLE_FMRADIO
