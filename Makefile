@@ -22,7 +22,8 @@ ENABLE_DTMF_CALLING           := 0
 
 # ---- CUSTOM MODS ----
 ENABLE_BIG_FREQ                         := 1
-ENABLE_SMALL_BOLD                       := 1
+# DO NOT ENABLE SMALL_BOLD or the firmware will not fit with the FM_INPUT option
+ENABLE_SMALL_BOLD                       := 0
 ENABLE_KEEP_MEM_NAME                    := 1
 ENABLE_WIDE_RX                          := 1
 ENABLE_TX_WHEN_AM                       := 0
@@ -50,14 +51,15 @@ ENABLE_MESSENGER_NOTIFICATION           := 1
 ENABLE_MESSENGER_UART                   := 0
 ENABLE_ENCRYPTION                       := 1
 # ---- NIKANT-SY1EBE ----
-ENABLE_SY1EBE                           := 1
-ENABLE_BOOT_BEEPS                       := 0
+ENABLE_SY1EBE                           := 0
+ENABLE_BOOT_BEEPS                       := 1
 ENABLE_INVERSE_DISPLAY                  := 0
+ENABLE_FM_INPUT							:= 1
 
 #############################################################
 
 AUTHOR_STRING := NKK
-VERSION_STRING := v0.0.3nN
+VERSION_STRING := v0.0.5nN
                                                           
 ifeq ($(ENABLE_SY1EBE),1)
 	TARGET = firmware.$(AUTHOR_STRING).$(VERSION_STRING).SY1EBE
@@ -256,6 +258,20 @@ CFLAGS += -Wextra
 CFLAGS += -DPRINTF_INCLUDE_CONFIG_H
 CFLAGS += -DAUTHOR_STRING=\"$(AUTHOR_STRING)\" -DVERSION_STRING=\"$(VERSION_STRING)\"
 
+ifeq ($(ENABLE_SY1EBE),1)
+	CFLAGS += -DENABLE_SY1EBE
+endif
+ifeq ($(ENABLE_BOOT_BEEPS),1)
+	CFLAGS  += -DENABLE_BOOT_BEEPS
+endif
+ifeq ($(ENABLE_INVERSE_DISPLAY),1)
+	CFLAGS  += -DENABLE_INVERSE_DISPLAY
+endif
+ifeq ($(ENABLE_FM_INPUT),1)
+	CFLAGS  += -DENABLE_FM_INPUT
+    ENABLE_SMALL_BOLD := 0
+endif
+
 ifeq ($(ENABLE_SPECTRUM),1)
 CFLAGS += -DENABLE_SPECTRUM
 endif
@@ -405,15 +421,6 @@ ifeq ($(DEBUG),1)
 	LDFLAGS += -g
 endif
 
-ifeq ($(ENABLE_SY1EBE),1)
-	CFLAGS += -DENABLE_SY1EBE
-endif
-ifeq ($(ENABLE_BOOT_BEEPS),1)
-	CFLAGS  += -DENABLE_BOOT_BEEPS
-endif
-ifeq ($(ENABLE_INVERSE_DISPLAY),1)
-	CFLAGS  += -DENABLE_INVERSE_DISPLAY
-endif
 
 INC =
 INC += -I $(TOP)

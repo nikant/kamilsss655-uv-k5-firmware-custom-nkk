@@ -1172,13 +1172,15 @@ void APP_TimeSlice10ms(void)
 	}
 #endif
 
+/*
 #ifdef ENABLE_BOOT_BEEPS
 	if ((boot_counter_10ms > 0) && (boot_counter_10ms % 250) == 0) {
 		AUDIO_PlayBeep(BEEP_1399HZ_50MS_OPTIONAL);
 		AUDIO_PlayBeep(BEEP_1399HZ_50MS_OPTIONAL);
 	}
 #endif                        
-	
+*/
+
 	SCANNER_TimeSlice10ms();
 	
 #ifdef ENABLE_AIRCOPY

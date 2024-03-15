@@ -35,6 +35,9 @@
 #include "misc.h"
 #include "settings.h"
 #include "ui/ui.h"
+#ifdef ENABLE_FM_INPUT
+	#include "ui/inputbox.h"
+#endif
 
 const uint16_t FM_RADIO_MAX_FREQ = 1080; // 108  Mhz
 const uint16_t FM_RADIO_MIN_FREQ = 760;  // 76 Mhz
@@ -75,6 +78,37 @@ static void Key_UP_DOWN(bool direction)
 	gRequestSaveSettings = true;
 }
 
+#ifdef ENABLE_FM_INPUT
+	static void Key_DIGITS(KEY_Code_t Key) {
+
+		INPUTBOX_Append(Key);
+
+		if (gInputBoxIndex < 4) {
+			return;
+		}
+		uint32_t Frequency;
+
+		gInputBoxIndex = 0;
+		Frequency = StrToUL(INPUTBOX_GetAscii());
+
+		if (Frequency < FM_RADIO_MIN_FREQ) {
+			gBeepToPlay = BEEP_500HZ_60MS_DOUBLE_BEEP_OPTIONAL;
+			Frequency = FM_RADIO_MIN_FREQ;
+			//gRequestDisplayScreen = DISPLAY_FM;
+			//return;
+		} else if (FM_RADIO_MAX_FREQ < Frequency) {
+			gBeepToPlay = BEEP_500HZ_60MS_DOUBLE_BEEP_OPTIONAL;
+			Frequency = FM_RADIO_MAX_FREQ;
+		}
+
+		gEeprom.FM_FrequencyPlaying = (uint16_t) Frequency;
+		BK1080_SetFrequency(gEeprom.FM_FrequencyPlaying /*, gEeprom.FM_Band, gEeprom.FM_Space*/ );
+		gRequestDisplayScreen = DISPLAY_FM;
+		return;
+
+	}
+#endif
+
 void FM_ProcessKeys(KEY_Code_t Key, bool bKeyPressed, bool bKeyHeld)
 {	
 	uint8_t state = bKeyPressed + 2 * bKeyHeld;
@@ -82,6 +116,11 @@ void FM_ProcessKeys(KEY_Code_t Key, bool bKeyPressed, bool bKeyHeld)
 	if (state == 0) {
 		switch (Key)
 		{	
+			#ifdef ENABLE_FM_INPUT
+				case KEY_0...KEY_9:
+					Key_DIGITS(Key);
+					break;
+			#endif
 			case KEY_UP:
 				Key_UP_DOWN(true);
 				break;
@@ -95,7 +134,7 @@ void FM_ProcessKeys(KEY_Code_t Key, bool bKeyPressed, bool bKeyHeld)
 				gBeepToPlay = BEEP_500HZ_60MS_DOUBLE_BEEP_OPTIONAL;
 				break;
 		}
-	}
+	} 
 }
 
 void FM_Start(void)

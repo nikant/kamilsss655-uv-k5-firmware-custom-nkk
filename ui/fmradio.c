@@ -29,6 +29,9 @@
 #include "external/printf/printf.h"
 #include "settings.h"
 #include "ui/helper.h"
+#ifdef ENABLE_FM_INPUT
+	#include "ui/inputbox.h"
+#endif
 
 void UI_DisplayFM(void)
 {
@@ -46,7 +49,25 @@ void UI_DisplayFM(void)
 
 	memset(String, 0, sizeof(String));
 
-	sprintf(String, "%3d.%d", gEeprom.FM_FrequencyPlaying / 10, gEeprom.FM_FrequencyPlaying % 10);
+	#ifdef ENABLE_FM_INPUT
+		if (gInputBoxIndex != 0) {
+			const char * ascii = INPUTBOX_GetAscii();
+			sprintf(String, "%.3s.%.1s",ascii, ascii + 3);			
+		} else 
+	#endif	
+		{
+			sprintf(String, "%3d.%d", gEeprom.FM_FrequencyPlaying / 10, gEeprom.FM_FrequencyPlaying % 10);
+		}
+
+/*
+		if (gInputBoxIndex == 0) {
+			sprintf(String, "%3d.%d", gEeprom.FM_FrequencyPlaying / 10, gEeprom.FM_FrequencyPlaying % 10);
+		} else {
+			const char * ascii = INPUTBOX_GetAscii();
+			sprintf(String, "%.3s.%.1s",ascii, ascii + 3);
+		}
+*/
+
 	UI_DisplayFrequency(String, 32, 4, true);			
 
 	ST7565_BlitFullScreen();
