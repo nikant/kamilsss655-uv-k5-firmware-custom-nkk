@@ -4,10 +4,13 @@
 > If you want to have a more stable FW, I advise you to look at other options. ☠️❗⚠️**
 >
 ##
+### v0.0.5nN
+#### - added the ability to manually input stations in FM radio
+#### - all small fonts are bold for better readability and because I am old 😆
 ### v0.0.3nN
 #### - removed all NOAA code from source
 ### v0.0.3
-#### - STILL TESTING `UNLOCK ALL` frequencies to the hidden `F LOCK` menu (3 times to activate) 
+#### - (under test, seems to work) `UNLOCK ALL` frequencies to the hidden `F LOCK` menu (3 times to activate) 
 ### v0.0.2
 #### - Long press `M` key asigned to Switch Demodulation
 #### - added vertical line to separate menus from submenus
@@ -17,7 +20,7 @@
 #### - changes to POWER_ON_DISPLAY_MODE_FULL_SCREEN
 #### - added LPD frequencies to F_LOCK_PMR -> || (Frequency >= 43307500 && Frequency <= 43477500)
 ##
-## This repository is a fork of [kamilsss655 firwmare](https://github.com/kamilsss655/uv-k5-firmware-custom). My changes are minor at the moment and for personal use.
+## This repository is a fork of [kamilsss655 firwmare](https://github.com/kamilsss655/uv-k5-firmware-custom). 
 ##
 # Open re-implementation of the Quansheng UV-K5 v2.1.27 firmware
 
