@@ -54,7 +54,7 @@ ENABLE_ENCRYPTION                       := 1
 # ---- NIKANT-SY1EBE ----
 ENABLE_SY1EBE                           := 0
 ENABLE_BOOT_BEEPS                       := 1
-ENABLE_INVERSE_DISPLAY                  := 0
+ENABLE_INVERSE_DISPLAY                  := 1
 ENABLE_FM_INPUT                         := 1
 
 #############################################################
