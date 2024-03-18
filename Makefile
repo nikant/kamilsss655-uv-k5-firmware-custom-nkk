@@ -60,7 +60,7 @@ ENABLE_FM_INPUT                         := 1
 #############################################################
 
 AUTHOR_STRING := NKK
-VERSION_STRING := v0.0.5nN
+VERSION_STRING := v0.0.6nN
                                                           
 ifeq ($(ENABLE_SY1EBE),1)
 	TARGET = firmware.$(AUTHOR_STRING).$(VERSION_STRING).SY1EBE
