@@ -138,7 +138,7 @@ const uint8_t gFontBig[95 - 1][16 - 2] =
 	};
 
 	// 6 Empty columns removed
-#elif 0
+#elif 1
 	// VCR font
 	const uint8_t gFontBigDigits[11][26 - 6] =
 	{
