@@ -4,6 +4,8 @@
 > If you want to have a more stable FW, I advise you to look at other options. ☠️❗⚠️**
 >
 ##
+### v0.0.6nN
+#### - frequencies are now 18MHz ~ `660MHz` and 760MHz ~ 1300MHz as per BK4819 specs
 ### v0.0.5nN
 #### - added the ability to manually input stations in FM radio
 #### - all small fonts are bold for better readability and because I am old 😆
