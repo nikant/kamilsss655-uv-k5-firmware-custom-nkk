@@ -4,7 +4,7 @@
 > If you want to have a more stable FW, I advise you to look at other options. ☠️❗⚠️**
 >
 
-## This repository is a fork of [kamilsss655 firwmare](https://github.com/kamilsss655/uv-k5-firmware-custom). My changes are minor at the moment and for personal use.
+## This repository is a fork of [kamilsss655 firwmare](https://github.com/kamilsss655/uv-k5-firmware-custom). My changes are minor. Check [releases](https://github.com/nikant/kamilsss655-uv-k5-firmware-custom-nkk/releases)
 ##
 # Open re-implementation of the Quansheng UV-K5 v2.1.27 firmware
 
