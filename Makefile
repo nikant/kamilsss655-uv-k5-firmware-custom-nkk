@@ -49,7 +49,7 @@ ENABLE_MESSENGER                        := 1
 ENABLE_MESSENGER_DELIVERY_NOTIFICATION  := 1
 ENABLE_MESSENGER_FSK_MUTE               := 1
 ENABLE_MESSENGER_NOTIFICATION           := 1
-ENABLE_MESSENGER_UART                   := 0
+ENABLE_MESSENGER_UART                   := 1
 ENABLE_ENCRYPTION                       := 1
 # ---- NIKANT-SY1EBE ----
 ENABLE_SY1EBE                           := 0
