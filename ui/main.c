@@ -39,6 +39,9 @@
 #include "ui/inputbox.h"
 #include "ui/main.h"
 #include "ui/ui.h"
+#ifdef ENABLE_SQLUPDOWN_NTF
+    #include "driver/system.h"                       
+#endif
 
 center_line_t center_line = CENTER_LINE_NONE;
 
@@ -140,6 +143,20 @@ void UI_DisplayAudioBar(void)
 }
 #endif
 
+#ifdef ENABLE_SQLUPDOWN_NTF                           
+void UI_DisplaySQLVAL(void)
+{
+    // clear the screen
+	memset(gFrameBuffer, 0, sizeof(gFrameBuffer));
+    char bufsql[2];
+    snprintf(bufsql, sizeof(bufsql), "%d", gEeprom.SQUELCH_LEVEL); 
+    UI_PrintString("Squelch is now", 0, LCD_WIDTH, 1, 8);
+	UI_PrintString(bufsql, 0, LCD_WIDTH, 3, 8);
+	ST7565_BlitFullScreen();
+    SYSTEM_DelayMs(500);
+    gRequestDisplayScreen = DISPLAY_MAIN;     
+}
+#endif 
 
 static void DisplayRSSIBar(const int16_t rssi, const bool now)
 {

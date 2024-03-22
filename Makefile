@@ -30,7 +30,7 @@ ENABLE_WIDE_RX                          := 1
 ENABLE_TX_WHEN_AM                       := 0
 ENABLE_F_CAL_MENU                       := 0
 ENABLE_SHOW_CHARGE_LEVEL                := 1
-ENABLE_REVERSE_BAT_SYMBOL               := 1
+ENABLE_REVERSE_BAT_SYMBOL               := 0
 ENABLE_NO_CODE_SCAN_TIMEOUT             := 1
 ENABLE_SQUELCH_MORE_SENSITIVE           := 1
 ENABLE_FASTER_CHANNEL_SCAN              := 1
@@ -51,11 +51,16 @@ ENABLE_MESSENGER_FSK_MUTE               := 1
 ENABLE_MESSENGER_NOTIFICATION           := 1
 ENABLE_MESSENGER_UART                   := 1
 ENABLE_ENCRYPTION                       := 1
+
 # ---- NIKANT-SY1EBE ----
-ENABLE_SY1EBE                           := 0
+ENABLE_SY1EBE                           := 1
 ENABLE_BOOT_BEEPS                       := 1
 ENABLE_INVERSE_DISPLAY                  := 0
 ENABLE_FM_INPUT                         := 1
+# enable changing Squelch with F + Up or F + Down keys
+ENABLE_SQLUPDOWN                        := 1
+# display message when changing Squelch with F + Up or F + Down keys
+ENABLE_SQLUPDOWN_NTF                    := 1
 
 #############################################################
 
@@ -268,6 +273,14 @@ endif
 ifeq ($(ENABLE_INVERSE_DISPLAY),1)
 	CFLAGS  += -DENABLE_INVERSE_DISPLAY
 endif
+
+ifeq ($(ENABLE_SQLUPDOWN),1)
+	CFLAGS  += -DENABLE_SQLUPDOWN
+    ifeq ($(ENABLE_SQLUPDOWN_NTF),1)
+        CFLAGS  += -DENABLE_SQLUPDOWN_NTF
+    endif
+endif
+
 ifeq ($(ENABLE_FM_INPUT),1)
 	CFLAGS  += -DENABLE_FM_INPUT
     ENABLE_SMALL_BOLD := 0

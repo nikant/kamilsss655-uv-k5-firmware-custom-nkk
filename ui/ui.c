@@ -56,6 +56,12 @@ void GUI_DisplayScreen(void)
 			UI_DisplayMain();
 			break;
 
+        #ifdef ENABLE_SQLUPDOWN_NTF 
+		case DISPLAY_SQLVAL:
+			UI_DisplaySQLVAL();
+			break;
+        #endif            
+        
 		#ifdef ENABLE_FMRADIO
 			case DISPLAY_FM:
 				UI_DisplayFM();

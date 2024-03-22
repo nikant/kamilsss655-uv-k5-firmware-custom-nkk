@@ -26,10 +26,15 @@
 enum GUI_DisplayType_t
 {
 	DISPLAY_MAIN = 0,
-	DISPLAY_FM,
+    #ifdef ENABLE_FMRADIO
+        DISPLAY_FM,
+    #endif  
 	DISPLAY_MENU,
 	DISPLAY_SCANNER,
 	DISPLAY_AIRCOPY,
+    #ifdef ENABLE_SQLUPDOWN_NTF // Squelch F + Up or Down
+        DISPLAY_SQLVAL,
+    #endif                                                     
 	#ifdef ENABLE_MESSENGER
 		DISPLAY_MSG,
 	#endif

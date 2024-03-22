@@ -35,6 +35,9 @@ extern center_line_t center_line;
 void UI_DisplayAudioBar(void);
 void UI_UpdateRSSI(const int16_t rssi, const int vfo);
 void UI_DisplayMain(void);
+#ifdef ENABLE_SQLUPDOWN_NTF // Squelch F + Up or Down
+    void UI_DisplaySQLVAL(void);
+#endif                                                 
 
 #endif
 
