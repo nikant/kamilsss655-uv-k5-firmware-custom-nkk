@@ -4,6 +4,8 @@
 > If you want to have a more stable FW, I advise you to look at other options. ☠️❗⚠️**
 >
 ##
+#### NO, IT DOESN'T WORK WITH CHIRP. NO, NON FUNZIONA CON CHIRP. NON, CELA NE FONCTIONNE PAS AVEC CHIRP. NEIN, MIT CHIRP FUNKTIONIERT ES NICHT. NO, NO FUNCIONA CON CHIRP. NEI DET FUNGERER IKKE MED CHIRP. NEJ DET FUNGERAR INTE MED CHIRP. NE, S CHIRP TO NEFUNGUJE.
+##
 ### v0.0.6nN
 #### - frequencies are now 18MHz ~ `660MHz` and 840MHz ~ 1300MHz as per BK4819 specs https://www.alldatasheet.com/datasheet-pdf/pdf/1756567/BEKEN/BK4819.html
 #### - SQUELCH can now be TEMPORARILY changed by pressing `F` + ↕️ (Up or Down arrows)
