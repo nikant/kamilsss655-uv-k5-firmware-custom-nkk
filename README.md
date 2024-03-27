@@ -6,7 +6,7 @@
 ##
 ### v0.0.6nN
 #### - frequencies are now 18MHz ~ `660MHz` and 840MHz ~ 1300MHz as per BK4819 specs https://www.alldatasheet.com/datasheet-pdf/pdf/1756567/BEKEN/BK4819.html
-#### - SQUELCH can now be changed by pressing `F` + ↕️ (Up or Down arrows)
+#### - SQUELCH can now be TEMPORARILY changed by pressing `F` + ↕️ (Up or Down arrows)
 ### v0.0.5nN
 #### - added the ability to manually input stations in FM radio
 #### - all small fonts are bold for better readability and because I am old 😆
