@@ -19,4 +19,5 @@ Within the codebase all code that is not present in the original codespace of ht
 Further Information:
 
 Apache License 2.0: https://xml.apache.org/xindice/license.pdf
+
 GNU General Public License v3: https://www.gnu.org/licenses/gpl-3.0.en.html
