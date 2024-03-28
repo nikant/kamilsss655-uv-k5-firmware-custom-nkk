@@ -3,8 +3,13 @@
 >Your warranty is now void. I am not responsible for bricked devices, dead radios, thermonuclear war. YOU are choosing to make these modifications, and if you point the finger at me for messing up your device, I will laugh at you. 
 > If you want to have a more stable FW, I advise you to look at other options. ☠️❗⚠️**
 >
-
-## This repository is a fork of [kamilsss655 firwmare](https://github.com/kamilsss655/uv-k5-firmware-custom). My changes are minor. Check [releases](https://github.com/nikant/kamilsss655-uv-k5-firmware-custom-nkk/releases)
+##
+### LICENSE: Thanks to closed source firmwares (like IJVs) the modifications made by me in the codebase are now licensed under GNU GPL v3 from now on.
+### This means anyone who distributes a changed version of this code containing code added be me must:
+### - Share the source code for their changes: This allows others to see what was modified and potentially build upon your work.
+### - Make the source code available upon request: Even if someone receives the original code, they can still request the source code for any modifications you made.
+##
+## This repository is a fork of [kamilsss655 firwmare](https://github.com/kamilsss655/uv-k5-firmware-custom). Check [releases](https://github.com/nikant/kamilsss655-uv-k5-firmware-custom-nkk/releases)
 ##
 # Open re-implementation of the Quansheng UV-K5 v2.1.27 firmware
 
